@@ -7,7 +7,7 @@
         public const string Description = @"Add multiple resource language files at once";
         public const string Language = "en-US";
         public const string Version = "0.5";
-        public const string Author = "Daniel Sandberg";
+        public const string Author = "BDSoftware";
         public const string Tags = "file, I8N, resource";
     }
 }
