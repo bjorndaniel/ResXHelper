@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="d8173046-6991-47f2-8f8d-f37e01c7ee7b" Version="1.0" Language="en-US" Publisher="Daniel Sandberg" />
+        <Identity Id="d8173046-6991-47f2-8f8d-f37e01c7ee7b" Version="0.5" Language="en-US" Publisher="Daniel Sandberg" />
         <DisplayName>ResX Helper</DisplayName>
-        <Description xml:space="preserve">When adding a resource file this extension can also add additional files for each language you select.</Description>
+        <Description xml:space="preserve">Adds a right click menu to the solution explorer where you can specify a base filename and a list of languages.
+Once you click Add file(s) the corresponding .resx files will be created.</Description>
+        <Icon>logo.png</Icon>
+        <PreviewImage>ScreenShot.png</PreviewImage>
         <Preview>true</Preview>
     </Metadata>
     <Installation>
