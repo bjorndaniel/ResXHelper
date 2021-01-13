@@ -19,3 +19,8 @@ E.g for filename Test and languages Swedish, Finnish the following files will be
 
 Initial release
 
+### 0.6
+
+* Added double-click to add and remove languages
+* Added default resx content to the files
+
