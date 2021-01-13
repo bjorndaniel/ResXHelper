@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;
 using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -140,7 +142,7 @@ namespace ResXHelper
                         {
                             using (var streamWriter = new StreamWriter(file.OpenWrite()))
                             {
-                               await streamWriter.WriteAsync("");
+                               await streamWriter.WriteAsync(ReadTemplate());
                             }
                             ProjectItem projectItem = null;
 
@@ -168,6 +170,17 @@ namespace ResXHelper
                 }
             }
 
+        }
+
+        private string ReadTemplate()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            const string resourceName = "ResXHelper.Resources.ResxTemplate.txt";
+            var stream = assembly.GetManifestResourceStream(resourceName);
+            using (var reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
         }
       
     }

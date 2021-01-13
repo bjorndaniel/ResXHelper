@@ -6,8 +6,8 @@
         public const string Name = "ResX helper";
         public const string Description = @"Add multiple resource language files at once";
         public const string Language = "en-US";
-        public const string Version = "0.5";
+        public const string Version = "0.6";
         public const string Author = "BDSoftware";
-        public const string Tags = "file, I8N, resource";
+        public const string Tags = "file, I18N, resource";
     }
 }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace ResXHelper
@@ -85,7 +86,18 @@ namespace ResXHelper
         private void BtnAddLanguage_Click(object sender, RoutedEventArgs e)
         {
             var item = LBLanguages.SelectedItem as Language;
-            if(item != null)
+            AddSelectedItem(item);
+        }
+
+        private void BtnRemoveLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            var item = LBSelectedLanguages.SelectedItem as Language;
+            RemoveSelectedItem(item);
+        }
+
+        private void AddSelectedItem(Language item)
+        {
+            if (item != null)
             {
                 AllLanguages.Remove(item);
                 SelectedLanguages.Add(item);
@@ -93,10 +105,8 @@ namespace ResXHelper
                 RaisePropertyChanged(nameof(SelectedLanguages));
             }
         }
-
-        private void BtnRemoveLanguage_Click(object sender, RoutedEventArgs e)
+        private void RemoveSelectedItem(Language item)
         {
-            var item = LBSelectedLanguages.SelectedItem as Language;
             if (item != null)
             {
                 SelectedLanguages.Remove(item);
@@ -129,6 +139,18 @@ namespace ResXHelper
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             TxtSearch.Text = string.Empty;
+        }
+
+        private void LBLanguages_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = ((ListBox)sender)?.SelectedItem as Language;
+            AddSelectedItem(item);
+        }
+
+        private void LBSelectedLanguages_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = ((ListBox)sender)?.SelectedItem as Language;
+            RemoveSelectedItem(item);
         }
     }
 }

@@ -108,6 +108,7 @@
     </Content>
     <Content Include="Resources\AddResourcesCommand.png" />
     <Content Include="Resources\file-alt.png" />
+    <EmbeddedResource Include="Resources\ResxTemplate.txt" />
     <Content Include="ScreenShot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

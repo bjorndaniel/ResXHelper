@@ -41,7 +41,7 @@
         </Grid>
         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">Available languages</Label>
         <Label Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center">Selected languages</Label>
-        <ListBox Grid.Row="3" Grid.Column="0" Name="LBLanguages" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListBox Grid.Row="3" Grid.Column="0" Name="LBLanguages" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseDoubleClick="LBLanguages_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="local:Model.Language">
                     <Grid Margin="0,2">
@@ -58,7 +58,7 @@
             <Label></Label>
             <Button Content="&lt;-" Name="BtnRemoveLanguage" Click="BtnRemoveLanguage_Click" Width="50"></Button>
         </StackPanel>
-        <ListBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Name="LBSelectedLanguages" HorizontalAlignment="Stretch"  >
+        <ListBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Name="LBSelectedLanguages" HorizontalAlignment="Stretch" MouseDoubleClick="LBSelectedLanguages_MouseDoubleClick"   >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
