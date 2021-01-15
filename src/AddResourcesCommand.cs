@@ -3,6 +3,7 @@ using EnvDTE;
 using MadsKristensen.AddAnyFile;
 using Microsoft.VisualStudio.Shell;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Reflection;
@@ -83,6 +84,8 @@ namespace ResXHelper
             Instance = new AddResourcesCommand(package, commandService);
         }
 
+       
+
         /// <summary>
         /// This function is the callback used to execute the command when the menu item is clicked.
         /// See the constructor to see how the menu item is associated with this function using
@@ -110,8 +113,8 @@ namespace ResXHelper
                 return;
             }
 
-            //var dir = new DirectoryInfo(folder);
-            var dialog = new SelectLanguageDialog("");
+            var lang = (package as ResXHelperPackage)?.DefaultLanguages ?? new List<Model.Language>();
+            var dialog = new SelectLanguageDialog(lang);
             IntPtr hwnd = new IntPtr(ResXHelperPackage.Dte.MainWindow.HWnd);
             System.Windows.Window window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
             dialog.Owner = window;
