@@ -24,3 +24,5 @@ Initial release
 * Added double-click to add and remove languages
 * Added default resx content to the files
 
+### 0.7
+* Added an options page to Tools -> Options where default languages can be saved. These will then be added to the selected box by default
