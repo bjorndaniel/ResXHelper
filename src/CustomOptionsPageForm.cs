@@ -39,7 +39,6 @@ namespace ResXHelper
             using (var reader = new StreamReader(stream))
             {
                 var list = reader.ReadToEnd();
-
                 var result = System.Text.Json.JsonSerializer.Deserialize<List<Language>>(list);
                 if (SelectedLanguages.Any())
                 {
