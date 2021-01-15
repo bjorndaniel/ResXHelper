@@ -4,6 +4,12 @@
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,6 +52,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AddResourcesCommand.cs" />
+    <Compile Include="CustomOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomOptionsPageForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomOptionsPageForm.Designer.cs">
+      <DependentUpon>CustomOptionsPageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\ProjectHelper.cs" />
     <Compile Include="Helpers\VsTheme.cs" />
@@ -63,7 +78,15 @@
     <Compile Include="source.extension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomOptionsPageForm.resx">
+      <DependentUpon>CustomOptionsPageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\languages.json" />
+    <EmbeddedResource Include="VSPackage.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
+    <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -109,6 +132,7 @@
     <Content Include="Resources\AddResourcesCommand.png" />
     <Content Include="Resources\file-alt.png" />
     <EmbeddedResource Include="Resources\ResxTemplate.txt" />
+    <Content Include="Resources\ResXHelperOptionsPackage.ico" />
     <Content Include="ScreenShot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

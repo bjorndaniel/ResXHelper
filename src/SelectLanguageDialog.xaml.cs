@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using Microsoft.VisualStudio.Shell;
+using System.Linq;
 
 namespace ResXHelper
 {
@@ -16,12 +18,11 @@ namespace ResXHelper
     /// </summary>
     public partial class SelectLanguageDialog : Window, INotifyPropertyChanged
     {
-
-        public SelectLanguageDialog(string folder)
+        public SelectLanguageDialog(List<Language> defaultLanguages)
         {
             InitializeComponent();
             DataContext = this;
-            LoadLanguages();
+            LoadLanguages(defaultLanguages);
             LBLanguages.ItemsSource = AllLanguages;
             LBSelectedLanguages.ItemsSource = SelectedLanguages;
             LBLanguages.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Descending));
@@ -57,7 +58,7 @@ namespace ResXHelper
 
         public bool CanAdd => !string.IsNullOrEmpty(TxtName.Text);
 
-        private void LoadLanguages()
+        private void LoadLanguages(List<Language> defaultLanguages)
         {
             var assembly = Assembly.GetExecutingAssembly();
             const string resourceName = "ResXHelper.Resources.languages.json";
@@ -67,8 +68,26 @@ namespace ResXHelper
                 var list = reader.ReadToEnd();
 
                 var result = System.Text.Json.JsonSerializer.Deserialize<List<Language>>(list);
-                AllLanguages = new ObservableCollection<Language>(result);
+                if (defaultLanguages.Any())
+                {
+                    var collection = new ObservableCollection<Language>();
+                    foreach(var r in result)
+                    {
+                        if(!defaultLanguages.Any(_ => _.Code == r.Code))
+                        {
+                            collection.Add(r);
+                        }
+                    }
+                    AllLanguages = collection;
+                    SelectedLanguages = new ObservableCollection<Language>(defaultLanguages);
+                }
+                else
+                {
+                    AllLanguages = new ObservableCollection<Language>(result);
+                }
+                
             }
+           
         }
 
         private bool LanguageFilter(object item)
@@ -105,6 +124,7 @@ namespace ResXHelper
                 RaisePropertyChanged(nameof(SelectedLanguages));
             }
         }
+
         private void RemoveSelectedItem(Language item)
         {
             if (item != null)

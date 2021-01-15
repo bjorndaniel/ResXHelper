@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="d8173046-6991-47f2-8f8d-f37e01c7ee7b" Version="0.6" Language="en-US" Publisher="BDSoftware" />
+        <Identity Id="d8173046-6991-47f2-8f8d-f37e01c7ee7b" Version="0.7" Language="en-US" Publisher="BDSoftware" />
         <DisplayName>ResX Helper</DisplayName>
         <Description xml:space="preserve">Adds a right click menu to the solution explorer where you can specify a base filename and a list of languages.
 Once you click Add file(s) the corresponding .resx files will be created.</Description>
@@ -13,7 +13,8 @@ Once you click Add file(s) the corresponding .resx files will be created.</Descr
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-    </Dependencies>
+      <Dependency Id="Microsoft.VisualStudio.MPF.16.0" DisplayName="Visual Studio MPF 16.0" d:Source="Installed" Version="[16.0,17.0)" />
+  </Dependencies>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,17.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
