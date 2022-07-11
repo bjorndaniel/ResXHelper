@@ -21,8 +21,8 @@
     </Buttons>
 
     <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\AddResourcesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="testIcon" href="Resources\file-alt.png" usedList="testIcon1"/>
+      <Bitmap guid="guidImages" href="..\ResXHelper.Shared\Resources\AddResourcesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="testIcon" href="..\ResXHelper.Shared\Resources\file-alt.png" usedList="testIcon1"/>
     </Bitmaps>
   </Commands>
   <Symbols>

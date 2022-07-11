@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1bee77ee-dacf-464a-b4bf-f1430e416776</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ResXHelper.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AddResourcesCommand.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\file-alt.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\ResXHelperOptionsPackage.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)ScreenShot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CustomOptionsPageForm.resx">
+      <DependentUpon>CustomOptionsPageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\languages.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\ResxTemplate.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)VSPackage.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AddResourcesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomOptionsPageForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomOptionsPageForm.Designer.cs">
+      <DependentUpon>CustomOptionsPageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProjectHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\VsTheme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Language.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResXHelperPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectLanguageDialog.xaml.cs">
+      <DependentUpon>SelectLanguageDialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)SelectLanguageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
