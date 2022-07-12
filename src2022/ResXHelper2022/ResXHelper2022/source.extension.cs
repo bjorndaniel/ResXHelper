@@ -12,7 +12,7 @@ namespace ResXHelper2022
         public const string Description = @"Adds a right click menu to the solution explorer where you can specify a base filename and a list of languages.
 Once you click Add file(s) the corresponding .resx files will be created.";
         public const string Language = "en-US";
-        public const string Version = "1.0";
+        public const string Version = "1.1";
         public const string Author = "BDSoftware";
         public const string Tags = "";
     }

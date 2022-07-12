@@ -13,6 +13,7 @@
             if (result ?? false)
             {
                 var project = await VS.Solutions.GetActiveProjectAsync();
+                var x = VS.Solutions.GetActiveItemAsync();
                 var location = new FileInfo(project.FullPath);
                 var template = ReadTemplate();
                 FileInfo file = null;
