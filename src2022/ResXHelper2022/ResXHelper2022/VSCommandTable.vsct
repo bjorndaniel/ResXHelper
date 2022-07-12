@@ -25,7 +25,7 @@
 	</Commands>
 
 	<Symbols>
-		<GuidSymbol name="commandIcon" value="{CC8D4B09-A9BA-4C18-A0D8-526B2929B47A}">
+		<GuidSymbol name="commandIcon" value="{cc8d4b09-a9ba-4c18-a0d8-526b2929b47a}">
 			<IDSymbol name="commandIcon1" value="1" />
 		</GuidSymbol>
 		<GuidSymbol name="ResXHelper2022" value="{3cc60c5a-3658-46ee-80eb-89a2d780cb52}">
@@ -33,4 +33,3 @@
 		</GuidSymbol>
 	</Symbols>
 </CommandTable>
- 

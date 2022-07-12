@@ -1,4 +1,11 @@
-﻿namespace ResXHelper2022
+﻿using Microsoft.VisualStudio.Threading;
+using ResXHelper2022.Model;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Windows;
+
+namespace ResXHelper2022
 {
     [Command(PackageIds.AddResourcesCommand)]
     internal sealed class AddResourcesCommand : BaseCommand<AddResourcesCommand>
@@ -6,7 +13,7 @@
 
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
-            var options = await Settings.GetLiveInstanceAsync();
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             var languages = (Package as ResXHelper2022Package)?.DefaultLanguages ?? new List<ResourceLanguage>();
             var window = new SelectLanguageDialog(languages);
             var result = await VS.Windows.ShowDialogAsync(window);
@@ -15,7 +22,7 @@
                 var project = await VS.Solutions.GetActiveProjectAsync();
                 var location = new FileInfo(project.FullPath);
                 var template = ReadTemplate();
-                FileInfo file = null;
+                FileInfo file;
                 foreach (var f in window.FileNames)
                 {
                     try
@@ -58,10 +65,8 @@
             var assembly = Assembly.GetExecutingAssembly();
             const string resourceName = "ResXHelper2022.Resources.ResxTemplate.txt";
             var stream = assembly.GetManifestResourceStream(resourceName);
-            using (var reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
         }
     }
 }

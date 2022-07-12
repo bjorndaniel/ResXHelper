@@ -1,4 +1,14 @@
-﻿namespace ResXHelper2022.Options
+﻿using ResXHelper2022.Model;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json;
+using System.Windows.Forms;
+using static ResXHelper2022.OptionsProvider;
+
+namespace ResXHelper2022.Options
 {
     public partial class SettingsForm : UserControl
     {
@@ -50,7 +60,7 @@
                 SelectedLanguages.Add(item);
                 LBSelectedLanguages.Refresh();
                 LBAllLanguages.Refresh();
-                CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
+                //CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
             }
         }
 
@@ -62,7 +72,7 @@
                 AllLanguages.Add(item);
                 LBSelectedLanguages.Refresh();
                 LBAllLanguages.Refresh();
-                CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
+                //CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
             }
         }
 

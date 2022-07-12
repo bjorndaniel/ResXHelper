@@ -1,4 +1,16 @@
-﻿namespace ResXHelper2022
+﻿using ResXHelper2022.Model;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+
+namespace ResXHelper2022
 {
     /// <summary>
     /// Interaction logic for SelectLanguageDialog.xaml

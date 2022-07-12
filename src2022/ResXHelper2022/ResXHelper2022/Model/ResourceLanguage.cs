@@ -1,4 +1,7 @@
-﻿namespace ResXHelper2022.Model
+﻿using System;
+using System.Text.Json.Serialization;
+
+namespace ResXHelper2022.Model
 {
     public class ResourceLanguage : IComparable
     {

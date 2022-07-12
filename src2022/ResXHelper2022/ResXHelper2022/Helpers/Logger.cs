@@ -1,4 +1,9 @@
 ﻿//Code copied from https://github.com/madskristensen/AddAnyFile
+using Microsoft;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
+using System;
+
 internal static class Logger
 {
     private static string _name;
