@@ -7,33 +7,30 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace ResXHelper
+namespace ResXHelper.Shared
 {
     [Guid("4CE7129B-A40D-4B73-A5F9-044C2A10D12E")]
+    [ComVisible(true)]
     public class CustomOptionsPage : DialogPage
     {
-        private List<Language> _defaultLanguages = new List<Language>();
         private const string _collectionName = "ResXHelperSettings";
 
-        public List<Language> DefaultLanguages
-        {
-            get => _defaultLanguages;
-            set => _defaultLanguages = value;
-        }
+        public List<Language> DefaultLanguages { get; set; } = new List<Language>();
 
         protected override IWin32Window Window
         {
             get
             {
-                var page = new CustomOptionsPageForm(_defaultLanguages);
+                var page = new CustomOptionsPageForm(DefaultLanguages);
                 page.customOptionsPage = this;
                 page.Initialize();
                 return page;
             }
         }
         //From https://stackoverflow.com/questions/32751040/store-array-in-options-using-dialogpage
-        public async override void SaveSettingsToStorage()
+        public override void SaveSettingsToStorage()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             base.SaveSettingsToStorage();
             var settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
             var userSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
@@ -44,11 +41,12 @@ namespace ResXHelper
             }
 
             var json = System.Text.Json.JsonSerializer.Serialize(DefaultLanguages);
-            userSettingsStore.SetString(_collectionName,nameof(DefaultLanguages),json);
+            userSettingsStore.SetString(_collectionName, nameof(DefaultLanguages), json);
         }
 
         public override void LoadSettingsFromStorage()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             base.LoadSettingsFromStorage();
             var settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
             var userSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);

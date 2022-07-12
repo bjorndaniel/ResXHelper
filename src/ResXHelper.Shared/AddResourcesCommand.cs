@@ -1,5 +1,4 @@
 ﻿//File writer code from https://github.com/madskristensen/AddAnyFile
-using EnvDTE;
 using MadsKristensen.AddAnyFile;
 using Microsoft.VisualStudio.Shell;
 using System;
@@ -7,12 +6,20 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
+using MessageBox = System.Windows.MessageBox;
+using EnvDTE;
+#if VS2019
 using Task = System.Threading.Tasks.Task;
+#else
+using Project = EnvDTE.Project;
+using ResXHelper_2022;
+using ResXHelperPackage = ResXHelper_2022.ResXHelper_2022Package;
+#endif
 
-namespace ResXHelper
+
+namespace ResXHelper.Shared
 {
     /// <summary>
     /// Command handler
@@ -84,7 +91,7 @@ namespace ResXHelper
             Instance = new AddResourcesCommand(package, commandService);
         }
 
-       
+
 
         /// <summary>
         /// This function is the callback used to execute the command when the menu item is clicked.
@@ -115,7 +122,11 @@ namespace ResXHelper
 
             var lang = (package as ResXHelperPackage)?.DefaultLanguages ?? new List<Model.Language>();
             var dialog = new SelectLanguageDialog(lang);
-            IntPtr hwnd = new IntPtr(ResXHelperPackage.Dte.MainWindow.HWnd);
+#if VS2019
+            var hwnd = new IntPtr(ResXHelperPackage.Dte.MainWindow.HWnd);
+#else
+            var hwnd = ResXHelperPackage.Dte.MainWindow.HWnd;
+#endif
             System.Windows.Window window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
             dialog.Owner = window;
 
@@ -145,7 +156,7 @@ namespace ResXHelper
                         {
                             using (var streamWriter = new StreamWriter(file.OpenWrite()))
                             {
-                               await streamWriter.WriteAsync(ReadTemplate());
+                                await streamWriter.WriteAsync(ReadTemplate());
                             }
                             ProjectItem projectItem = null;
 
@@ -185,6 +196,6 @@ namespace ResXHelper
                 return reader.ReadToEnd();
             }
         }
-      
+
     }
 }

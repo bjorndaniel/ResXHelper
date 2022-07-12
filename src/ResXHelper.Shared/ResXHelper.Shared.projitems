@@ -42,7 +42,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProjectHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VsTheme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Language.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResXHelperPackage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SelectLanguageDialog.xaml.cs">
       <DependentUpon>SelectLanguageDialog.xaml</DependentUpon>
     </Compile>

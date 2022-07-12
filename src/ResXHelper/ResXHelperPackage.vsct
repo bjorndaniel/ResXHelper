@@ -6,8 +6,6 @@
   <Extern href="vsshlids.h" />
 
   <Commands package="guidResXHelperPackage">
-    <Groups>
-    </Groups>
    
     <Buttons>
       <Button guid="guidToolbarButtonPackageCmdSet" id="AddResourcesCommandId" priority="0xF000" type="Button">

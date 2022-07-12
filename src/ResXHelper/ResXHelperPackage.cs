@@ -2,6 +2,7 @@
 using EnvDTE80;
 using Microsoft;
 using Microsoft.VisualStudio.Shell;
+using ResXHelper.Shared;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -19,7 +20,6 @@ namespace ResXHelper
     {
         public static DTE2 Dte;
         public const string PackageGuidString = "7f93a347-7bf3-4fb7-925c-b6237a56cbc2";
-
         public List<Model.Language> DefaultLanguages
         {
             get
@@ -34,8 +34,8 @@ namespace ResXHelper
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             Dte = await GetServiceAsync(typeof(DTE)) as DTE2;
             Assumes.Present(Dte);
-
             Logger.Initialize(this, Vsix.Name);
+
             await AddResourcesCommand.InitializeAsync(this);
         }
 

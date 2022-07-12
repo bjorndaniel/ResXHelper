@@ -1,10 +1,8 @@
 ﻿//Code copied from https://github.com/madskristensen/AddAnyFile
 
+//using EnvDTE;
 using EnvDTE;
-
-
 using EnvDTE80;
-
 using Microsoft;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
@@ -13,12 +11,18 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+#if VS2019
 using ResXHelper;
+#else
+using ResXHelper_2022;
+using ResXHelperPackage = ResXHelper_2022.ResXHelper_2022Package;
+#endif
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Project = EnvDTE.Project;
 
 namespace MadsKristensen.AddAnyFile
 {
@@ -37,7 +41,7 @@ namespace MadsKristensen.AddAnyFile
 
 			try
 			{
-				Property prop = project.Properties.Item("RootNamespace");
+				var prop = project.Properties.Item("RootNamespace");
 
 				if (prop != null && prop.Value != null && !string.IsNullOrEmpty(prop.Value.ToString()))
 				{

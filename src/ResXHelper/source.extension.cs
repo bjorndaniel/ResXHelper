@@ -1,5 +1,6 @@
 ﻿namespace ResXHelper
 {
+#if VS2019
     internal sealed partial class Vsix
     {
         public const string Id = "d8173046-6991-47f2-8f8d-f37e01c7ee7b";
@@ -10,4 +11,5 @@
         public const string Author = "BDSoftware";
         public const string Tags = "file, I18N, resource";
     }
+#endif
 }

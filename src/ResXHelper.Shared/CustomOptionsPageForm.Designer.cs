@@ -1,5 +1,5 @@
 ﻿
-namespace ResXHelper
+namespace ResXHelper.Shared
 {
     partial class CustomOptionsPageForm
     {

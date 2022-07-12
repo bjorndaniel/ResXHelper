@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Microsoft.VisualStudio.Shell;
-using System.Linq;
 
-namespace ResXHelper
+namespace ResXHelper.Shared
 {
     /// <summary>
     /// Interaction logic for SelectLanguageDialog.xaml
@@ -27,7 +26,7 @@ namespace ResXHelper
             LBSelectedLanguages.ItemsSource = SelectedLanguages;
             LBLanguages.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Descending));
             LBSelectedLanguages.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Descending));
-            ((CollectionView)CollectionViewSource.GetDefaultView(LBLanguages.ItemsSource)).Filter = LanguageFilter ;
+            ((CollectionView)CollectionViewSource.GetDefaultView(LBLanguages.ItemsSource)).Filter = LanguageFilter;
 
             RaisePropertyChanged(nameof(AllLanguages));
             RaisePropertyChanged(nameof(SelectedLanguages));
@@ -71,9 +70,9 @@ namespace ResXHelper
                 if (defaultLanguages.Any())
                 {
                     var collection = new ObservableCollection<Language>();
-                    foreach(var r in result)
+                    foreach (var r in result)
                     {
-                        if(!defaultLanguages.Any(_ => _.Code == r.Code))
+                        if (!defaultLanguages.Any(_ => _.Code == r.Code))
                         {
                             collection.Add(r);
                         }
@@ -85,20 +84,20 @@ namespace ResXHelper
                 {
                     AllLanguages = new ObservableCollection<Language>(result);
                 }
-                
+
             }
-           
+
         }
 
         private bool LanguageFilter(object item)
         {
             if (string.IsNullOrEmpty(TxtSearch.Text))
             {
-                return true; 
+                return true;
             }
             else
             {
-                return ((item as Language).Name.IndexOf(TxtSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0); 
+                return ((item as Language).Name.IndexOf(TxtSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 
@@ -141,7 +140,7 @@ namespace ResXHelper
             var fileName = TxtName.Text;
             FileNames.Clear();
             FileNames.Add($"{fileName}.resx");
-            foreach(var lang in SelectedLanguages)  
+            foreach (var lang in SelectedLanguages)
             {
                 FileNames.Add($"{fileName}.{lang.Code}.resx");
             }

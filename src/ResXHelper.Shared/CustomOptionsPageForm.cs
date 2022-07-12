@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ResXHelper
+namespace ResXHelper.Shared
 {
     public partial class CustomOptionsPageForm : UserControl
     {
@@ -43,9 +43,9 @@ namespace ResXHelper
                 if (SelectedLanguages.Any())
                 {
                     var bindingList = new BindingList<Language>();
-                    foreach(var r in result)
+                    foreach (var r in result)
                     {
-                        if(!SelectedLanguages.Any(_ => _.Code == r.Code))
+                        if (!SelectedLanguages.Any(_ => _.Code == r.Code))
                         {
                             bindingList.Add(r);
                         }
@@ -62,7 +62,7 @@ namespace ResXHelper
         private void LBAllLanguages_DoubleClick(object sender, System.EventArgs e)
         {
             var item = ((ListBox)sender).SelectedItem as Language;
-            if(item != null)
+            if (item != null)
             {
                 AddSelectedItem(item);
             }
