@@ -6,6 +6,7 @@ using ResXHelper2022.Model;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
+using static ResXHelper2022.OptionsProvider;
 
 namespace ResXHelper2022
 {
@@ -20,9 +21,8 @@ namespace ResXHelper2022
         {
             get
             {
-                return null;
-                //var page = (SettingsOptions)GetDialogPage(typeof(SettingsOptions));
-                //return page.DefaultLanguages;
+                var page = (SettingsOptions)GetDialogPage(typeof(SettingsOptions));
+                return page.DefaultLanguages;
             }
         }
 

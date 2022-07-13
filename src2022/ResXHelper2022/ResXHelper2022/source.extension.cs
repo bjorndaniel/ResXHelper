@@ -7,7 +7,7 @@ namespace ResXHelper2022
 {
     internal sealed partial class Vsix
     {
-        public const string Id = "7CAF59FC-323F-48E8-8ACD-BB062BD339F4";
+        public const string Id = "27bf0bda-a4e6-431c-a350-f38a7b74bbf6";
         public const string Name = "ResX Helper 2022";
         public const string Description = @"Adds a right click menu to the solution explorer where you can specify a base filename and a list of languages.
 Once you click Add file(s) the corresponding .resx files will be created.";

@@ -3,8 +3,6 @@
 
 	<Extern href="stdidcmd.h"/>
 	<Extern href="vsshlids.h"/>
-	<Include href="KnownImageIds.vsct"/>
-	<Include href="VSGlobals.vsct"/>
 
 	<Commands package="ResXHelper2022">
 
