@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace ResXHelper2022.Model
+namespace VSIXProject4.Model
 {
     public class ResourceLanguage : IComparable
     {

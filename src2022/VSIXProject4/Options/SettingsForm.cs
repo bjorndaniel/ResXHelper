@@ -1,14 +1,14 @@
-﻿using ResXHelper2022.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
-using static ResXHelper2022.OptionsProvider;
+using VSIXProject4.Model;
+using static VSIXProject4.OptionsProvider;
 
-namespace ResXHelper2022.Options
+namespace VSIXProject4.Options
 {
     public partial class SettingsForm : UserControl
     {
@@ -36,7 +36,7 @@ namespace ResXHelper2022.Options
         private void LoadLanguages()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "ResXHelper2022.Resources.languages.json";
+            const string resourceName = "VSIXProject4.Resources.languages.json";
             var stream = assembly.GetManifestResourceStream(resourceName);
             using var reader = new StreamReader(stream);
             var list = reader.ReadToEnd();
@@ -60,7 +60,7 @@ namespace ResXHelper2022.Options
                 SelectedLanguages.Add(item);
                 LBSelectedLanguages.Refresh();
                 LBAllLanguages.Refresh();
-                //CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
+                CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
             }
         }
 
@@ -72,7 +72,7 @@ namespace ResXHelper2022.Options
                 AllLanguages.Add(item);
                 LBSelectedLanguages.Refresh();
                 LBAllLanguages.Refresh();
-                //CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
+                CustomOptionsPage.DefaultLanguages = SelectedLanguages.ToList();
             }
         }
 

@@ -1,6 +1,4 @@
-﻿using ResXHelper2022.Model;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -9,11 +7,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using VSIXProject4.Model;
 
-namespace ResXHelper2022
+namespace VSIXProject4
 {
     /// <summary>
-    /// Interaction logic for SelectLanguageDialog.xaml
+    /// Interaction logic for SelectLanguage.xaml
     /// </summary>
     public partial class SelectLanguageDialog : Window, INotifyPropertyChanged
     {
@@ -60,7 +59,7 @@ namespace ResXHelper2022
         private void LoadLanguages(List<ResourceLanguage> defaultLanguages)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "ResXHelper2022.Resources.languages.json";
+            const string resourceName = "VSIXProject4.Resources.languages.json";
             var stream = assembly.GetManifestResourceStream(resourceName);
             using (var reader = new StreamReader(stream))
             {

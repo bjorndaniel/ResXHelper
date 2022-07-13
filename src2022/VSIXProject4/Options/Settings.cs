@@ -1,22 +1,22 @@
 ﻿using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell.Settings;
-using ResXHelper2022.Model;
-using ResXHelper2022.Options;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
+using VSIXProject4.Model;
+using VSIXProject4.Options;
 
-namespace ResXHelper2022
+namespace VSIXProject4
 {
     internal partial class OptionsProvider
     {
         // Register the options with this attribute on your package class:
-        // [ProvideOptionPage(typeof(OptionsProvider.SettingsOptions), "ResXHelper2022", "Settings", 0, 0, true, SupportsProfiles = true)]
+        // [ProvideOptionPage(typeof(OptionsProvider.SettingsOptions), "VSIXProject4", "Settings", 0, 0, true, SupportsProfiles = true)]
         [ComVisible(true)]
         public class SettingsOptions : DialogPage
         {
-            private const string _collectionName = "ResXHelperSettings";
+            private const string _collectionName = "ResXHelper2022Settings";
 
             public List<ResourceLanguage> DefaultLanguages { get; internal set; } = new List<ResourceLanguage>();
 
@@ -64,4 +64,5 @@ namespace ResXHelper2022
             }
         }
     }
+
 }

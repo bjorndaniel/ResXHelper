@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
+  <Include href="VSGlobals.vsct"/>
+
+  <Commands package="VSIXProject4">
+    <!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+    <Buttons>
+      <Button guid="VSIXProject4" id="AddResourcesCommand" priority="0xF000" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS" />
+        <Icon guid="commandIcon" id="commandIcon1" />
+        <Strings>
+          <ButtonText>Add resources</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+	  <Bitmaps>
+		  <Bitmap guid="commandIcon" href="Resources\file-alt.png" usedList="commandIcon1"/>
+	  </Bitmaps>
+  </Commands>
+
+  <Symbols>
+	  <GuidSymbol name="commandIcon" value="{4537D792-6E3D-4118-BC58-83177CC105AB}">
+		  <IDSymbol name="commandIcon1" value="1" />
+	  </GuidSymbol>
+    <GuidSymbol name="VSIXProject4" value="{74863b99-dc65-4f66-b21c-9fe4bf1aaa40}">
+      <IDSymbol name="AddResourcesCommand" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

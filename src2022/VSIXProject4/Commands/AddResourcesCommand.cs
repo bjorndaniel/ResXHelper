@@ -1,38 +1,42 @@
-﻿using Microsoft.VisualStudio.Threading;
-using ResXHelper2022.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using VSIXProject4.Model;
 
-namespace ResXHelper2022
+namespace VSIXProject4
 {
     [Command(PackageIds.AddResourcesCommand)]
     internal sealed class AddResourcesCommand : BaseCommand<AddResourcesCommand>
     {
-
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var languages = (Package as ResXHelper2022Package)?.DefaultLanguages ?? new List<ResourceLanguage>();
+            var languages = (Package as VSIXProject4Package)?.DefaultLanguages ?? new List<ResourceLanguage>();
             var window = new SelectLanguageDialog(languages);
             var result = await VS.Windows.ShowDialogAsync(window);
             if (result ?? false)
             {
                 var project = await VS.Solutions.GetActiveProjectAsync();
+                var selectedFolder = await VS.Solutions.GetActiveItemAsync();
                 var location = new FileInfo(project.FullPath);
+                var saveDir = location.Directory.FullName;
+                if (selectedFolder.Type == SolutionItemType.PhysicalFolder)
+                {
+                    saveDir = selectedFolder.FullPath;
+                }
+
                 var template = ReadTemplate();
                 FileInfo file;
                 foreach (var f in window.FileNames)
                 {
                     try
                     {
-                        file = new FileInfo(Path.Combine(location.Directory.FullName, f));
+                        file = new FileInfo(Path.Combine(saveDir, f));
                     }
-                    catch (PathTooLongException ex)
+                    catch (PathTooLongException)
                     {
                         System.Windows.MessageBox.Show("The file name is too long 😢", Vsix.Name, MessageBoxButton.OK, MessageBoxImage.Error);
-                        Logger.Log(ex);
                         continue;
                     }
                     var dir = file.DirectoryName;
@@ -47,10 +51,7 @@ namespace ResXHelper2022
                             }
                             await project.AddExistingFilesAsync(file.FullName);
                         }
-                        catch (Exception ex)
-                        {
-                            Logger.Log(ex);
-                        }
+                        catch (Exception) { }
                     }
                     else
                     {
@@ -63,7 +64,7 @@ namespace ResXHelper2022
         private string ReadTemplate()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "ResXHelper2022.Resources.ResxTemplate.txt";
+            const string resourceName = "VSIXProject4.Resources.ResxTemplate.txt";
             var stream = assembly.GetManifestResourceStream(resourceName);
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd();

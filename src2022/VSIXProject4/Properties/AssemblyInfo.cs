@@ -1,6 +1,6 @@
-﻿using ResXHelper2022;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using VSIXProject4;
 
 [assembly: AssemblyTitle(Vsix.Name)]
 [assembly: AssemblyDescription(Vsix.Description)]

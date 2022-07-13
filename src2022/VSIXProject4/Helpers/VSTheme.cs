@@ -1,7 +1,5 @@
 ﻿//Code copied from https://github.com/madskristensen/AddAnyFile
 using Microsoft.VisualStudio.PlatformUI;
-using Microsoft.VisualStudio.Shell;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
