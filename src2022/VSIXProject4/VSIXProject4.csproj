@@ -72,6 +72,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ScreenShot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\ResxTemplate.txt" />
     <EmbeddedResource Include="Resources\languages.json" />
     <None Include="source.extension.vsixmanifest">

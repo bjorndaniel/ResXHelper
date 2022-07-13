@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="27bf0bda-a4e6-431c-a350-f38a7b74bbf6" Version="1.1" Language="en-US" Publisher="BDSoftware" />
+    <Identity Id="27bf0bda-a4e6-431c-a350-f38a7b74bbf6" Version="1.2" Language="en-US" Publisher="BDSoftware" />
     <DisplayName>ResX Helper 2022</DisplayName>
     <Description>Adds a right click menu to the solution explorer where you can specify a base filename and a list of languages.
 Once you click Add file(s) the corresponding .resx files will be created.</Description>
-    <Icon>Resources\Icon.png</Icon>
-    <PreviewImage>Resources\Icon.png</PreviewImage>
+    <Icon>Resources\logo.png</Icon>
+    <PreviewImage>Resources\ScreenShot.png</PreviewImage>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
